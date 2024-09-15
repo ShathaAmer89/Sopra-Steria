@@ -26,13 +26,19 @@ namespace Sopra_Steria.Controllers
             return View(result);
         }
 
-
+        [HttpGet]
         public IActionResult ContactUs()
         {
-            var result = db.Categories.ToList();
-            return View(result);
+      
+            return View();
         }
-
+        [HttpPost]
+        public IActionResult send(ContactUs model)
+        {
+            db.ContactUs.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public IActionResult Privacy()
         {
             return View();
